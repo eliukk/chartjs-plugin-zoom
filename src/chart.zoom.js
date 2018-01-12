@@ -2,11 +2,11 @@
 /*global require*/
 
 // hammer JS for touch support
-var Hammer = require('hammerjs');
+var Hammer = require('../../hammerjs2/hammerjs2.js');
 Hammer = typeof(Hammer) === 'function' ? Hammer : window.Hammer;
 
 // Get the chart variable
-var Chart = require('chart.js');
+var Chart = require('../../chart.js/src/chart');
 Chart = typeof(Chart) === 'function' ? Chart : window.Chart;
 var helpers = Chart.helpers;
 
@@ -198,6 +198,8 @@ function doZoom(chartInstance, zoom, center, whichAxes) {
 
 		chartInstance.update(0);
 	}
+
+	document.getElementById('resetChartButton').style.visibility = 'visible';
 }
 
 function panIndexScale(scale, delta, panOptions) {
@@ -336,6 +338,25 @@ var zoomPlugin = {
 			chartInstance.update();
 		};
 
+        var node = chartInstance.zoom.node = chartInstance.chart.ctx.canvas;
+
+        //button resets zoom to start state
+		var resetContainer = document.createElement("div");
+		resetContainer.style='text-align:center;';
+
+        var btn = document.createElement("BUTTON");
+        btn.id = "resetChartButton";
+        btn.style.visibility = 'hidden';
+        btn.onclick = function(){
+        	chartInstance.resetZoom();
+        	btn.style.visibility = 'hidden';
+        };
+
+        var t = document.createTextNode(chartInstance.options.zoom.resetButtonText);
+        btn.appendChild(t);
+        resetContainer.appendChild(btn)
+
+        node.parentElement.insertBefore(resetContainer, node.parentElement.firstChild);
 	},
 	beforeInit: function(chartInstance) {
 		chartInstance.zoom = {};
