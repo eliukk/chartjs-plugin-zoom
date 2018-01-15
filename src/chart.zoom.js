@@ -342,7 +342,7 @@ var zoomPlugin = {
 
         //button resets zoom to start state
 		var resetContainer = document.createElement("div");
-		resetContainer.style='text-align:center;';
+		resetContainer.style='text-align:center;width:100%;';
 
         var btn = document.createElement("BUTTON");
         btn.id = "resetChartButton";
