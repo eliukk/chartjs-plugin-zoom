@@ -2,7 +2,7 @@
 /*global require*/
 
 // hammer JS for touch support
-var Hammer = require('../../hammerjs/hammerjs.js');
+var Hammer = require('../../hammerjs/hammer.js');
 Hammer = typeof(Hammer) === 'function' ? Hammer : window.Hammer;
 
 // Get the chart variable
