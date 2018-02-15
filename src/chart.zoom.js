@@ -348,13 +348,13 @@ var zoomPlugin = {
         btn.id = "resetChartButton";
         btn.style.visibility = 'hidden';
         btn.onclick = function(){
-        	chartInstance.resetZoom();
+			chartInstance.resetZoom();
         	btn.style.visibility = 'hidden';
         };
 
         var t = document.createTextNode(chartInstance.options.zoom.resetButtonText);
         btn.appendChild(t);
-        resetContainer.appendChild(btn)
+        resetContainer.appendChild(btn);
 
         node.parentElement.insertBefore(resetContainer, node.parentElement.firstChild);
 	},
